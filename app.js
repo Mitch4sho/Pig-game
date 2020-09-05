@@ -19,11 +19,19 @@ document.querySelector('.btn-roll').addEventListener('click', function () {
     if (gamePlaying) {
         // 1. Random Number generator 
         dice = Math.floor(Math.random() * 6) + 1;
+        dice2 = Math.floor(Math.random() * 6) + 1;
 
         // 2. Display results
         var diceDOM = document.querySelector('.dice');
+        var diceDOM2 = document.querySelector('.dice2');
+
+        //first Dice 
         diceDOM.style.display = 'block';
         diceDOM.src = 'dice-' + dice + '.png';
+
+        //second Dice
+        diceDOM2.style.display = ' block';
+        diceDOM2.src = "dice-" + dice2 + '.png';
 
         //for new rule 
         diceArray.unshift(dice);
@@ -41,13 +49,12 @@ document.querySelector('.btn-roll').addEventListener('click', function () {
         }
 
         //3. update the round score IF the rolled was NOT 1
-        if (dice !== 1) {
-            //Add score
-            roundScore += dice;
-            document.querySelector('#current-' + activePlayer).textContent = roundScore;
+        if (dice === 1 || dice2 === 1) {
+            nextPlayer();
 
         } else {
-            nextPlayer();
+            roundScore += (dice + dice2);
+            document.querySelector('#current-' + activePlayer).textContent = roundScore;
         }
     }
 });
@@ -91,6 +98,7 @@ function init() {
     gamePlaying = true;
 
     document.querySelector('.dice').style.display = 'none ';
+    document.querySelector('.dice2').style.display = 'none';
 
     document.getElementById('score-0').textContent = '0';
     document.getElementById('score-1').textContent = '0';
