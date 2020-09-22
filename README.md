@@ -1,6 +1,6 @@
 # Pig-game
 
-Used this template from a course to learn more JavaScript, Html and CSS files were include in this repo
+Used this template from a course to learn more JavaScript. Html and CSS files were include in this repo
 
 GAME RULES:
 
